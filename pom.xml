@@ -66,6 +66,13 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>ru.yandex.qatools.allure</groupId>
+                <artifactId>allure-maven-plugin</artifactId>
+                <configuration>
+                    <reportDirectory>allure-report</reportDirectory>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
