@@ -11,7 +11,7 @@ import ru.yandex.qatools.allure.annotations.Stories;
  * Created by user on 02.12.2016.
  */
 
-public abstract class SimpleTest extends DriveInit{
+public class SimpleTest extends DriveInit{
 
     ItplacePage itplace;
 
