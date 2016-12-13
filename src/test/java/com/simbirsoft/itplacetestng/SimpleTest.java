@@ -3,6 +3,7 @@ package com.simbirsoft.itplacetestng;
 
 import com.simbirsoft.itplacetestng.pages.ItplacePage;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
@@ -19,6 +20,11 @@ public class SimpleTest extends DriveInit{
         itplace = new ItplacePage(driver);
     }
 
+    @Attachment(value = "Page screenshot", type = "image/png")
+    public byte[] saveScreenshot(byte[] screenShot) {
+        return screenShot;
+    }
+
 
     @Features("Тесты на TestNG")
     @Stories("Первый тест")
@@ -28,6 +34,7 @@ public class SimpleTest extends DriveInit{
         itplace.loadAllField();
         itplace.mouseClickByLocator(itplace.sendButton);
         itplace.findRedRabbit();
+        saveScreenshot();
         System.out.println("Case is passed. http://itplace.simbirsoft.com/ Form with captcha worked");
     }
 

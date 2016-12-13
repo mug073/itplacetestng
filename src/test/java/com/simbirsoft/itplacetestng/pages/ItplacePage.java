@@ -101,7 +101,7 @@ public class ItplacePage {
 //            String rndCourse=pfdriver.selectRndEnrolButton();
 
             System.out.println("Checking Complete Form with enroll is working");
-            System.out.println("Выбранный случайный курс: "+rndCourse);
+            System.out.println("Select random Course: "+rndCourse);
             if (driver.findElement(By.id(rndCourse)).isSelected())
             {oneSimpleCheck = true;}
         }catch (Exception e) {
