@@ -2,9 +2,16 @@ package com.simbirsoft.itplacetestng;
 
 
 import com.simbirsoft.itplacetestng.pages.ItplacePage;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
+
+import java.io.IOException;
 
 
 /**
@@ -20,9 +27,23 @@ public class SimpleTest extends DriveInit{
         itplace = new ItplacePage(driver);
     }
 
+    @AfterMethod
+    public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
+        if (testResult.getStatus() == ITestResult.FAILURE) {
 
-    @Features("Тесты на TestNG")
-    @Stories("Первый тест")
+            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            failAllureScreenshot(screenshot);
+        }
+    }
+
+    @Attachment(value = "Page_Fail_Screenshot", type = "image/png")
+    public byte[] failAllureScreenshot(byte[] screenShot) {
+        return screenShot;
+    }
+
+
+    @Features("Test with TestNG")
+    @Stories("First test")
     @Test
     public void case00() throws Exception {
         itplace.openItPlaceMainPageWithCaptcha();
@@ -32,8 +53,8 @@ public class SimpleTest extends DriveInit{
         System.out.println("Case is passed. http://itplace.simbirsoft.com/ Form with captcha worked");
     }
 
-    @Features("Тесты на TestNG")
-    @Stories("Второй тест")
+    @Features("Test with TestNG")
+    @Stories("Second test")
     @Test
     public void case01() {
         System.out.println("Webdriver at test: " + driver);
