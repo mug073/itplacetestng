@@ -133,10 +133,6 @@ public class ItplacePage {
 
     //-------------ассерт кейса 00 -------------
     public void findRedRabbit(){
-        assertEquals(driver.findElement(By.xpath(".//*[@id='captcha']")).getAttribute("class"),"full-width error");
+        assertEquals(driver.findElement(By.xpath(".//*[@id='captcha']")).getAttribute("class"),"full-width error1");
     }
-
-
-
-
 }
